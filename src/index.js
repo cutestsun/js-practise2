@@ -1,8 +1,8 @@
 import "./styles/normalize.css";
 import "./styles/index.css";
-import { getProducts } from "./requests/products";
+import { getProducts, getSingleProduct } from "./requests/products";
 import refs from "./refs";
-import { createProductListMarkup } from "./services/markupService";
+import { createProductListMarkup, createSingleProductMarkup } from "./services/markupService";
 
 async function renderProducts() {
   const response = await getProducts();
@@ -10,3 +10,17 @@ async function renderProducts() {
   refs.productsList.innerHTML = markup;
 }
 // renderProducts();
+refs.singleProductForm.addEventListener("submit", onFormSubmit);
+async function onFormSubmit(evt) {
+  evt.preventDefault();
+
+  const id = evt.currentTarget.elements.id.value.trim();
+  if (!id) { return };
+  const product = await getSingleProduct(id);
+  if (!product) { return };
+  const markup = createSingleProductMarkup(product);
+  refs.singleProduct.innerHTML = markup;
+}
+
+
+ 
