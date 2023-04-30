@@ -12,12 +12,21 @@ async function getProducts() {
 
 async function getSingleProduct(id) {
   try {
-    const response = await instance.get(`/products/${id}`)
+    const response = await instance.get(`/products/${id}`);
     return response.data;
   } catch (error) {
-     console.error(error);
+    console.error(error);
   }
 }
 
+async function addProduct(data) {
+  try {
+    const response = await instance.post("/products/add", data);
 
-export { getProducts, getSingleProduct };
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export { getProducts, getSingleProduct, addProduct };
