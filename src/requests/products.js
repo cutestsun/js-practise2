@@ -10,4 +10,14 @@ async function getProducts() {
   }
 }
 
-export { getProducts };
+async function getSingleProduct(id) {
+  try {
+    const response = await instance.get(`/products/${id}`)
+    return response.data;
+  } catch (error) {
+     console.error(error);
+  }
+}
+
+
+export { getProducts, getSingleProduct };
