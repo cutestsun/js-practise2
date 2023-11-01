@@ -1,3 +1,5 @@
+# 📚 JavaScript practice tasks
+
 - Создай apiInstance с помощью библиотеки axios. /* https://axios-http.com/docs/instance */
 
 Используй https://dummyjson.com как baseUrl.
